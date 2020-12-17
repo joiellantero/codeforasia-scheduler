@@ -1,6 +1,8 @@
 # Appointment Scheduler
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![Website](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fcodeforasia-scheduler.herokuapp.com%2F)](https://codeforasia-scheduler.herokuapp.com/)
+
 
 This website contains a form where users can set an appointment schedule with Code for Asia.
 > Disclaimer: this website is a take-home assignment for the internship challenge 2020 of Code for Asia.
