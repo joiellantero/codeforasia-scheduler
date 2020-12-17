@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core import serializers
+from .models import (
+    Schedule,
+)
 from .forms import (
     AuthenticationForm, 
     SignupForm, 
@@ -40,7 +44,7 @@ def index(request):
                     subject, 
                     final_msg, 
                     email,
-                    [email, 'jllantero123@gmail.com'],
+                    [email, 'nibblog2020@gmail.com'],
                     fail_silently=False,
                 )
                 messages.success(request, "Success! Message sent.", extra_tags='is-success')
@@ -48,9 +52,17 @@ def index(request):
                 messages.error(request, "Oh snap! Message failed to send.", extra_tags='is-danger')
                 return HttpResponse('Invalid header found.')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
+        else:
+            messages.error(request, "Oh snap! Message failed to send.", extra_tags='is-danger')
+    
+    json_serializer = serializers.get_serializer("json")()
+    schedule = json_serializer.serialize(Schedule.objects.all().order_by('id')[:5], ensure_ascii=False)
+    
     context = {
         'title': 'Appointment Scheduler',
         'form': form,
+        'schedule': schedule
     }
     return render(request, 'scheduler/index.html', context)
 

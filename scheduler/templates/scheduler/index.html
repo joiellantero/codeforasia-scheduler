@@ -4,6 +4,27 @@
     {% if request.user.is_authenticated %} 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+        <script>
+            let schedule = '{{ schedule|escapejs }}'; // get available sched from models
+            let obj = JSON.parse(schedule); // parse the info from the models into a dictionary
+            let dates = []
+            let times = []
+            for (const i of obj){
+                dates.push(i.fields.date)
+                times.push(i.fields.start_time)
+            }
+            let uniqueTimes = [...new Set(times)]; // remove repeated time
+            $(function () {
+                $("#id_date").datetimepicker({
+                    format: 'M d, Y H:i',
+                    formatDate:'Y-m-d',
+                    minDate:'+1970/01/02', //tomorrow is maximum date calendar
+                    allowTimes:uniqueTimes, 
+                    allowDates:dates,
+                });
+            });
+        </script>
     {% endif %}
 {% endblock %}
 
@@ -34,6 +55,7 @@
                             <div class="field">
                                 {{ form.phone_number }}
                                 <small id="phoneNumberHelp" class="form-text text-muted">{{ form.phone_number.errors }}</small>
+                                <p class="help">Please include your country code.</p>
                             </div>
                         </div>
                     </div>
