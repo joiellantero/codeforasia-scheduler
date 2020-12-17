@@ -25,9 +25,11 @@ This website contains a form where users can set an appointment schedule with Co
 #### As admin
 
 **Reminders**
-* Please do not change the username of the admin
-    * The website looks for this username to determine which user is the adminitrator.
-* You may change the email to whichever you like
+````
+1. Please do not change the username of the admin
+    - The website looks for this username to determine which user is the adminitrator.
+2. You may change the email to whichever you like
+````
 
 * To access: add `/admin` at the end of the url
 * Set the available date and time for appointments
