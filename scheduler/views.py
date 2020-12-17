@@ -108,8 +108,6 @@ def login(request):
             if User:
                 auth_login(request, User)
                 return redirect('scheduler-index')
-        else:
-            messages.error(request, "Hmm. This account doesn't seem to exist.", extra_tags='is-danger')
     else:
         form = AuthenticationForm()
     context = {
