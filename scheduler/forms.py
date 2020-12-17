@@ -150,6 +150,13 @@ class SchedulerForm(forms.Form):
         max_length = 10
     )
 
+    date = forms.DateTimeField(
+        required = True,
+        label = 'Schedule',
+        input_formats=['%m/%d/%Y %H:%M'],
+        widget = forms.TextInput(attrs = {'class':'input'}),
+    )
+
     subject = forms.CharField(
         required = True,
         label = 'Subject',
@@ -161,13 +168,6 @@ class SchedulerForm(forms.Form):
         required = False,
         label = 'Message',
         widget = forms.Textarea(attrs = {'class':'textarea', 'rows':5}),
-    )
-
-    date = forms.DateTimeField(
-        required = True,
-        label = 'Schedule',
-        input_formats=['%m/%d/%Y %H:%M'],
-        widget = forms.TextInput(attrs = {'class':'input'}),
     )
 
     class Meta:

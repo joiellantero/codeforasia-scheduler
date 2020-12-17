@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
+from django.contrib.auth.models import User
 from .models import (
     Schedule,
 )
@@ -23,6 +24,8 @@ from django.contrib.auth import (
 
 @login_required
 def index(request):
+    admin = User.objects.get(username='admin')
+    admin_email = admin.email
     form = SchedulerForm()
     if request.method == 'POST':
         form = SchedulerForm(request.POST)
@@ -37,14 +40,14 @@ def index(request):
 
             line = '-'*20
 
-            final_msg = f"SENDER INFO\n{line}\nName: {first_name} {last_name}\nEmail: {email}\nPhone: {phone_number}\nSCHEDULE\n{line}\n{date}\n\nSUBJECT\n{line}\n{subject}\n\nMESSAGE\n{line}\n{message}\n"
+            final_msg = f"SENDER INFO\n{line}\nName: {first_name} {last_name}\nEmail: {email}\nPhone: {phone_number}\n\nSCHEDULE\n{line}\n{date}\n\nSUBJECT\n{line}\n{subject}\n\nMESSAGE\n{line}\n{message}\n"
 
             try:
                 send_mail(
                     subject, 
                     final_msg, 
                     email,
-                    [email, 'nibblog2020@gmail.com'],
+                    [email, admin_email],
                     fail_silently=False,
                 )
                 messages.success(request, "Success! Message sent.", extra_tags='is-success')
@@ -57,7 +60,7 @@ def index(request):
             messages.error(request, "Oh snap! Message failed to send.", extra_tags='is-danger')
     
     json_serializer = serializers.get_serializer("json")()
-    schedule = json_serializer.serialize(Schedule.objects.all().order_by('id')[:5], ensure_ascii=False)
+    schedule = json_serializer.serialize(Schedule.objects.all().order_by('id')[:], ensure_ascii=False)
     
     context = {
         'title': 'Appointment Scheduler',

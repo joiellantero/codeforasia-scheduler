@@ -17,9 +17,9 @@
             let uniqueTimes = [...new Set(times)]; // remove repeated time
             $(function () {
                 $("#id_date").datetimepicker({
-                    format: 'M d, Y H:i',
+                    format: 'm/d/Y H:i',
                     formatDate:'Y-m-d',
-                    minDate:'+1970/01/02', //tomorrow is maximum date calendar
+                    minDate:'+1970/01/02', //tomorrow is minimum date calendar
                     allowTimes:uniqueTimes, 
                     allowDates:dates,
                 });
@@ -45,7 +45,7 @@
         {% endif %} 
         <div class="card mt-6">
             <div class="card-body">
-                <form action="{% url 'scheduler-index' %}" method="post" class="mt-5" onsubmit="return checkBeforeSubmit()">
+                <form action="" method="post" class="mt-5" onsubmit="return checkBeforeSubmit()">
                     {% csrf_token %}
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
@@ -54,7 +54,7 @@
                         <div class="field-body">
                             <div class="field">
                                 {{ form.phone_number }}
-                                <small id="phoneNumberHelp" class="form-text text-muted">{{ form.phone_number.errors }}</small>
+                                <p id="phoneNumberHelp" class="help text-danger">{{ form.phone_number.errors }}</p>
                                 <p class="help">Please include your country code.</p>
                             </div>
                         </div>
@@ -75,6 +75,7 @@
                                     {{ form.date }}
                                 </p>
                             </div>
+                            <p class="help text-danger">{{ form.date.errors }}</p>
                           </div>
                         </div>
                     </div>
@@ -83,7 +84,11 @@
                             <label class="label">{{ form.subject.label }}</label>
                         </div>
                         <div class="field-body">
-                            {{ form.subject }}
+                            <div class="field">
+                                {{ form.subject }}
+                                <br>
+                                <p class="help text-danger">{{ form.subject.errors }}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="field is-horizontal">
@@ -93,6 +98,8 @@
                         <div class="field-body">
                             <div class="field">
                                 {{ form.message }}
+                                <br>
+                                <p class="help text-danger">{{ form.message.errors }}</p>
                             </div>
                         </div>
                     </div>
