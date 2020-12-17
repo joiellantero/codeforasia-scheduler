@@ -9,7 +9,7 @@ This website contains a form where users can set an appointment schedule with Co
 * Schedule aapointments using a form
 * Admin may set available date and time using the admin dashboard
 * Sends an email notification to both user and admin when the form is submitted
-    * Currently, the email used to send the email notification is for one of my sample blog website, i.e., nibblog@gmail.com. 
+    * Currently, the email used to send the email notification is for one of my [sample blog website](https://nib-blog.herokuapp.com/), i.e., nibblog@gmail.com. 
     * I'm using `django.core.mail` and `SMTP` to make this possible 
 
 ### Usage
