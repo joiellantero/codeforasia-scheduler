@@ -3,6 +3,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 This website contains a form where users can set an appointment schedule with Code for Asia.
+> Disclaimer: this website is a take-home assignment for the internship challenge 2020 of Code for Asia.
 
 ### Features
 
