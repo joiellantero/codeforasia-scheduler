@@ -43,7 +43,18 @@ $.each( $('*'), function() {
 
 // xdsoft date time picker
 $(function () {
-    $("#datetimepicker").datetimepicker();
+    $("#id_date").datetimepicker({
+        format: 'M d, Y H:i',
+        formatDate:'m.d.Y',
+        minDate:'+1970/01/02', //tomorrow is maximum date calendar
+        allowTimes:[
+            '12:00', '15:00', 
+            '17:00', '17:05', '17:20', '19:00', '20:00'
+        ],
+        allowDates:[
+            '12.20.2020', '12.19.2020',
+        ]
+    });
 });
 
 // prevents multiple form submissions

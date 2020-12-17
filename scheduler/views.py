@@ -26,20 +26,21 @@ def index(request):
             first_name = request.user.first_name
             last_name = request.user.last_name
             email = request.user.email
+            date = form.cleaned_data['date']
             phone_number = form.cleaned_data['phone_number']
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
 
             line = '-'*20
 
-            final_msg = f"SENDER INFO\n{line}\nName: {first_name} {last_name}\nEmail: {email}\nPhone: {phone_number}\n\nSUBJECT\n{line}\n{subject}\n\nMESSAGE\n{line}\n{message}\n"
+            final_msg = f"SENDER INFO\n{line}\nName: {first_name} {last_name}\nEmail: {email}\nPhone: {phone_number}\nSCHEDULE\n{line}\n{date}\n\nSUBJECT\n{line}\n{subject}\n\nMESSAGE\n{line}\n{message}\n"
 
             try:
                 send_mail(
                     subject, 
                     final_msg, 
                     email,
-                    ['nibblog2020@gmail.com'],
+                    [email, 'jllantero123@gmail.com'],
                     fail_silently=False,
                 )
                 messages.success(request, "Success! Message sent.", extra_tags='is-success')

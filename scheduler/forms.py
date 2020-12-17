@@ -160,12 +160,21 @@ class SchedulerForm(forms.Form):
     message = forms.CharField(
         required = False,
         label = 'Message',
-        widget = forms.Textarea(attrs = {'class':'input', 'rows':5}),
+        widget = forms.Textarea(attrs = {'class':'textarea', 'rows':5}),
+    )
+
+    date = forms.DateTimeField(
+        required = True,
+        label = 'Schedule',
+        input_formats=['%m/%d/%Y %H:%M'],
+        widget = forms.TextInput(attrs = {'class':'input'}),
     )
 
     class Meta:
         fields = [
             'phone_number',
+            'date',
             'subject',
             'message',
         ]
+

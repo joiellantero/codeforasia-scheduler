@@ -4,18 +4,27 @@
 
 This website contains a form where users can set an appointment schedule with Code for Asia.
 
+### Features
+
+* Schedule aapointments using a form
+* Admin may set available date and time using the admin dashboard
+* Sends an email notification to both user and admin when the form is submitted
+    * Currently, the email used to send the email notification is for one of my sample blog website, i.e., nibblog@gmail.com. 
+    * I'm using `django.core.mail` and `SMTP` to make this possible 
+
 ### Usage
 
 #### As user
 
 * Signup/login to set an appointment schedule
-* Able to edit your account information
-* Able to change your password
+* Edit your account information in your account page
+* Change your password in your account page
 
 #### As admin
 
-* Able to set the available date and time for appointments
-* Able to monitor the accounts registered
+* To access: add `/admin` at the end of the url
+* Set the available date and time for appointments
+* Monitor the accounts registered
 
 ### Web Stack
 
