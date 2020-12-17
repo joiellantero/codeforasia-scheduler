@@ -1,0 +1,38 @@
+{% extends 'scheduler/base.html' %}
+
+{% block header %}
+    <h1 class="title has-text-centered mt-6">Login</h1>
+{% endblock %}
+
+{% block body %}
+    <div class="container login">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="notification is-danger">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Oh snap!</strong> <br>
+                            Invalid Credentials!
+                        </div>
+                    {% endif %}
+                    <div class="field mb-4">
+                        <label for="username" class="mb-0">{{ form.username.label }}</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="field">
+                        <label for="password" class="mb-0">{{ form.password.label }}</label>
+                        {{ form.password }}
+                    </div>
+                    <div class="field my-4">
+                        <input type="checkbox" class="is-checkradio is-small is-info" id="rememberme" name="remember_me">
+                        <label class="form-check-label" for="rememberme">Remember me</label><br>
+                    </div>
+                    <button type="submit" class="button is-info is-fullwidth my-4">Login</button>
+                </form>
+            </div>
+            <p class="has-text-centered is-small">Don't have an account? Signup <a href="{% url 'scheduler-signup' %}">here.</a></p>
+        </div>
+    </div>
+{% endblock %}
