@@ -100,7 +100,7 @@ class EditAccountForm(UserChangeForm):
     )
 
     password = forms.CharField(
-        required=True,
+        required=False,
         label = 'Password',
         widget = forms.PasswordInput(attrs = {
             'class': 'input',
