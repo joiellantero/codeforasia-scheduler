@@ -99,6 +99,16 @@ class EditAccountForm(UserChangeForm):
         max_length = 100
     )
 
+    password = forms.CharField(
+        required=True,
+        label = 'Password',
+        widget = forms.PasswordInput(attrs = {
+            'class': 'input',
+            'disabled': 'disabled',
+        }),
+        help_text="Raw passwords are not stored, so there is no way to see this user’s password, but you can change the password using <a href='{% url 'scheduler-change-password' %}'>this form.</a>"
+    )
+
     class Meta:
         model = User
         fields = (
