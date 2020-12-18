@@ -19,6 +19,11 @@ p.is-small{
     font-size: 0.8em;
 }
 
+span.helptext{
+    font-size: 12px;
+}
+
+
 /* navbar */
 .navbar-item{
     text-transform: capitalize;
@@ -46,8 +51,30 @@ a.button{
     }
 }
 
+/* footer */
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p{
+    font-size: 12px;
+    text-align: center;
+    padding: 50px;
+}
+
 
 /* layout */
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    padding-bottom: 10rem;  
+}
+
 .container.login, 
 .container.signup,
 .container.account{

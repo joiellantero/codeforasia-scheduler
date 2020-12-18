@@ -84,9 +84,19 @@
             </div>
         </nav>
 
-        {% block header %}{% endblock %}
+        <div class="page-container">
+            <div class="content-wrap">
+                <div class="page-content">
+                    {% block header %}{% endblock %}
 
-        {% block body %}{% endblock %}
+                    {% block body %}{% endblock %}
+
+                    <footer>
+                        <p class="has-text-grey-light">Developed by <a class="has-text-info" href="https://github.com/joiellantero">joiellantero.</a></p>
+                    </footer>
+                </div>
+            </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="{% static 'scheduler/scripts/scheduler.js' %}"></script>
