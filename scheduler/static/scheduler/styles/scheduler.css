@@ -66,6 +66,22 @@ a.button{
     padding: 40px;
 }
 
+@media only screen and (max-width: 600px){
+    .container.login, 
+    .container.signup,
+    .container.account,
+    .container.index{
+        width: 90%;
+    }
+    
+    .container.login .card,
+    .container.signup .card,
+    .container.account .card,
+    .container.index .card{
+        padding: 30px;
+    }
+}
+
 
 
 
