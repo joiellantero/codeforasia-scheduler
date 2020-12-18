@@ -3,9 +3,10 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 [![Website](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fcodeforasia-scheduler.herokuapp.com%2F)](https://codeforasia-scheduler.herokuapp.com/)
 
-
 This website contains a form where users can set an appointment schedule with Code for Asia.
 > Disclaimer: this website is a take-home assignment for the internship challenge 2020 of Code for Asia.
+
+[Visit the website](https://codeforasia-scheduler.herokuapp.com/)
 
 ### Features
 
@@ -17,6 +18,42 @@ This website contains a form where users can set an appointment schedule with Co
     * I'm using `django.core.mail` and `SMTP` to make this possible 
 
 ### Usage
+
+#### Running the website locally  (macOS)
+
+1. Navigate inside the project folder (where the "manage.py" file is located)
+
+2. Create and run a virtual environment 
+
+````bash
+virtualenv env
+source env/bin/activate
+````
+
+3. Install all the dependencies
+
+````bash
+pip install -r requirements.txt
+````
+
+4. Migrate the database 
+
+````bash
+python3 manage.py migrate
+````
+
+5. Run the website
+
+````bash
+python3 manage.py runserver
+````
+
+6. Create a superuser
+
+````bash
+python3 manage.py createsuperuser
+````
+> Then enter all the necessary info, i.e., username, email, and password
 
 #### As user
 
